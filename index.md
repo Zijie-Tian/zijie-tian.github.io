@@ -1,5 +1,5 @@
-Here you can say lots of fun things about your site.
+Zijie-Tian's blogs
 
-Maybe say a some things about yourself.
+Nothing just blogs.
 
-Or maybe what you plan to blog about.
+my blogs.
