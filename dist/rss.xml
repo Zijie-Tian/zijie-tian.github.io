@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Zijie Tian&apos;s Blog</title><description>Personal Blog &amp; Tech Notes</description><link>https://zijie-tian.github.io/</link><language>zh_CN</language><item><title>我的第一篇博客文章</title><link>https://zijie-tian.github.io/posts/my-first-blog/</link><guid isPermaLink="true">https://zijie-tian.github.io/posts/my-first-blog/</guid><description>欢迎来到我的个人博客！这是我的第一篇文章，介绍了博客的建立过程和未来计划。</description><pubDate>Mon, 26 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;欢迎来到我的博客！&lt;/h1&gt;
+&lt;p&gt;这是我的第一篇博客文章，很高兴能够在这里与大家分享我的想法和经验。&lt;/p&gt;
+&lt;h2&gt;关于这个博客&lt;/h2&gt;
+&lt;p&gt;这个博客是基于 &lt;a href=&quot;https://astro.build&quot;&gt;Astro&lt;/a&gt; 框架构建的，使用了 &lt;a href=&quot;https://github.com/saicaca/fuwari&quot;&gt;Fuwari&lt;/a&gt; 主题模板。它具有以下特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;🚀 &lt;strong&gt;快速加载&lt;/strong&gt; - 基于 Astro 的静态站点生成&lt;/li&gt;
+&lt;li&gt;🎨 &lt;strong&gt;美观设计&lt;/strong&gt; - 现代化的 UI 设计，支持明暗主题切换&lt;/li&gt;
+&lt;li&gt;📱 &lt;strong&gt;响应式布局&lt;/strong&gt; - 完美适配各种设备&lt;/li&gt;
+&lt;li&gt;🔍 &lt;strong&gt;全文搜索&lt;/strong&gt; - 内置搜索功能&lt;/li&gt;
+&lt;li&gt;📝 &lt;strong&gt;Markdown 支持&lt;/strong&gt; - 支持丰富的 Markdown 语法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;技术栈&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;框架&lt;/strong&gt;: Astro&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;样式&lt;/strong&gt;: Tailwind CSS&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;部署&lt;/strong&gt;: GitHub Pages&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;包管理&lt;/strong&gt;: pnpm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;未来计划&lt;/h2&gt;
+&lt;p&gt;在这个博客中，我计划分享：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;技术文章&lt;/strong&gt; - 编程技巧、框架学习、项目经验&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;学习笔记&lt;/strong&gt; - 新技术的学习心得和总结&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生活感悟&lt;/strong&gt; - 日常思考和个人成长&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;项目展示&lt;/strong&gt; - 个人项目的介绍和演示&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;联系我&lt;/h2&gt;
+&lt;p&gt;如果你对我的文章有任何问题或建议，欢迎通过以下方式联系我：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GitHub: &lt;a href=&quot;https://github.com/zijie-tian&quot;&gt;zijie-tian&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Email: your-email@example.com&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;感谢你的阅读，期待与你在这里交流！&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;这篇文章标志着我博客之旅的开始，希望能够持续输出有价值的内容。&lt;/em&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Astro 框架简介</title><link>https://zijie-tian.github.io/posts/astro-introduction/</link><guid isPermaLink="true">https://zijie-tian.github.io/posts/astro-introduction/</guid><description>了解 Astro 框架的特点和优势，以及为什么选择它来构建静态网站。</description><pubDate>Mon, 26 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Astro 框架简介&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://astro.build&quot;&gt;Astro&lt;/a&gt; 是一个现代的静态网站生成器，专为构建快速、内容驱动的网站而设计。&lt;/p&gt;
+&lt;h2&gt;什么是 Astro？&lt;/h2&gt;
+&lt;p&gt;Astro 是一个全栈 Web 框架，用于构建快速、以内容为中心的网站，如博客、营销网站和电子商务网站。&lt;/p&gt;
+&lt;h3&gt;核心特性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;零 JavaScript 默认&lt;/strong&gt;: Astro 默认生成零客户端 JavaScript&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;组件岛屿&lt;/strong&gt;: 只在需要时加载交互式组件&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多框架支持&lt;/strong&gt;: 支持 React、Vue、Svelte 等&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;内置优化&lt;/strong&gt;: 自动优化图片、CSS 和 JavaScript&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;为什么选择 Astro？&lt;/h2&gt;
+&lt;h3&gt;1. 性能优先&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;// Astro 组件默认在服务器端渲染
+---
+const posts = await fetch(&apos;/api/posts&apos;).then(r =&amp;gt; r.json());
+---
+
+&amp;lt;div&amp;gt;
+  {posts.map(post =&amp;gt; (
+    &amp;lt;article&amp;gt;
+      &amp;lt;h2&amp;gt;{post.title}&amp;lt;/h2&amp;gt;
+      &amp;lt;p&amp;gt;{post.excerpt}&amp;lt;/p&amp;gt;
+    &amp;lt;/article&amp;gt;
+  ))}
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;2. 开发体验&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;热重载开发服务器&lt;/li&gt;
+&lt;li&gt;TypeScript 内置支持&lt;/li&gt;
+&lt;li&gt;丰富的集成生态系统&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;3. 灵活性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;可以混合使用不同的 UI 框架&lt;/li&gt;
+&lt;li&gt;支持 SSG、SSR 和混合渲染&lt;/li&gt;
+&lt;li&gt;易于部署到各种平台&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;适用场景&lt;/h2&gt;
+&lt;p&gt;Astro 特别适合：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;📝 &lt;strong&gt;博客和文档网站&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;🛍️ &lt;strong&gt;电商和营销网站&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;📊 &lt;strong&gt;作品集和展示网站&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;🏢 &lt;strong&gt;企业官网&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;开始使用&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# 创建新项目
+npm create astro@latest
+
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm run dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;总结&lt;/h2&gt;
+&lt;p&gt;Astro 通过其独特的&quot;组件岛屿&quot;架构和零 JavaScript 默认策略，为现代 Web 开发提供了一个高性能的解决方案。无论你是构建个人博客还是企业网站，Astro 都能提供出色的开发体验和用户体验。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;这个博客就是使用 Astro 构建的！&lt;/em&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Simple Guides for Fuwari</title><link>https://zijie-tian.github.io/posts/guide/</link><guid isPermaLink="true">https://zijie-tian.github.io/posts/guide/</guid><description>How to use this blog template.</description><pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Cover image source: &lt;a href=&quot;https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/208fc754-890d-4adb-9753-2c963332675d/width=2048/01651-1456859105-(colour_1.5),girl,_Blue,yellow,green,cyan,purple,red,pink,_best,8k,UHD,masterpiece,male%20focus,%201boy,gloves,%20ponytail,%20long%20hair,.jpeg&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This blog template is built with &lt;a href=&quot;https://astro.build/&quot;&gt;Astro&lt;/a&gt;. For the things that are not mentioned in this guide, you may find the answers in the &lt;a href=&quot;https://docs.astro.build/&quot;&gt;Astro Docs&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Front-matter of Posts&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: My First Blog Post
+published: 2023-09-09
+description: This is the first post of my new Astro blog.
+image: ./cover.jpg
+tags: [Foo, Bar]
+category: Front-end
+draft: false
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Attribute&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;The title of the post.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;published&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;The date the post was published.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;description&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;A short description of the post. Displayed on index page.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;image&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;The cover image path of the post.&amp;lt;br/&amp;gt;1. Start with &lt;code&gt;http://&lt;/code&gt; or &lt;code&gt;https://&lt;/code&gt;: Use web image&amp;lt;br/&amp;gt;2. Start with &lt;code&gt;/&lt;/code&gt;: For image in &lt;code&gt;public&lt;/code&gt; dir&amp;lt;br/&amp;gt;3. With none of the prefixes: Relative to the markdown file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tags&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;The tags of the post.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;category&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;The category of the post.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;draft&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;If this post is still a draft, which won&apos;t be displayed.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Where to Place the Post Files&lt;/h2&gt;
+&lt;p&gt;Your post files should be placed in &lt;code&gt;src/content/posts/&lt;/code&gt; directory. You can also create sub-directories to better organize your posts and assets.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;src/content/posts/
+├── post-1.md
+└── post-2/
+    ├── cover.png
+    └── index.md
+&lt;/code&gt;&lt;/pre&gt;
+</content:encoded></item><item><title>Markdown 语法示例</title><link>https://zijie-tian.github.io/posts/markdown/</link><guid isPermaLink="true">https://zijie-tian.github.io/posts/markdown/</guid><description>一个简单的 Markdown 博客文章示例，展示常用语法。</description><pubDate>Sun, 01 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Markdown 语法示例&lt;/h1&gt;
+&lt;p&gt;这篇文章展示了 Markdown 的常用语法。&lt;/p&gt;
+&lt;h2&gt;文本格式&lt;/h2&gt;
+&lt;p&gt;普通段落文本。支持 &lt;em&gt;斜体&lt;/em&gt;、&lt;strong&gt;粗体&lt;/strong&gt; 和 &lt;code&gt;代码&lt;/code&gt; 格式。&lt;/p&gt;
+&lt;h2&gt;列表&lt;/h2&gt;
+&lt;p&gt;无序列表：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一项&lt;/li&gt;
+&lt;li&gt;第二项&lt;/li&gt;
+&lt;li&gt;第三项&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有序列表：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;第一步&lt;/li&gt;
+&lt;li&gt;第二步&lt;/li&gt;
+&lt;li&gt;第三步&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;引用&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这是一个引用块。&lt;/p&gt;
+&lt;p&gt;可以包含多个段落。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;代码块&lt;/h2&gt;
+&lt;p&gt;行内代码：&lt;code&gt;console.log(&apos;Hello World&apos;)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;代码块：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+console.log(greet(&apos;World&apos;));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;链接和图片&lt;/h2&gt;
+&lt;p&gt;这是一个 &lt;a href=&quot;https://astro.build&quot;&gt;链接示例&lt;/a&gt;。&lt;/p&gt;
+&lt;h2&gt;表格&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;语法&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;**粗体**&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;粗体文本&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;_斜体_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;斜体文本&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;`代码`&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;代码文本&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;数学公式&lt;/h2&gt;
+&lt;p&gt;行内公式：$E = mc^2$&lt;/p&gt;
+&lt;p&gt;块级公式：
+$$
+\sum_{i=1}^{n} x_i = x_1 + x_2 + \cdots + x_n
+$$&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;这就是 Markdown 的基本语法示例！&lt;/p&gt;
+</content:encoded></item></channel></rss>

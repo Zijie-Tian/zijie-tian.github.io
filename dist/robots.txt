@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /_astro/
+
+Sitemap: https://zijie-tian.github.io/sitemap-index.xml
