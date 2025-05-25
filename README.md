@@ -1,94 +1,121 @@
-# 🍥Fuwari
+# Zijie Tian's Personal Blog
 
-A static blog template built with [Astro](https://astro.build).
+这是我的个人博客网站，基于 [Astro](https://astro.build) 框架和 [Fuwari](https://github.com/saicaca/fuwari) 主题构建。
 
-[**🖥️ Live Demo (Vercel)**](https://fuwari.vercel.app)&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-[**📦 Old Hexo Version**](https://github.com/saicaca/hexo-theme-vivia)&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-[**🌏 中文**](https://github.com/saicaca/fuwari/blob/main/README.zh-CN.md)&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-[**🌏 日本語**](https://github.com/saicaca/fuwari/blob/main/README.ja-JP.md)&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-[**🌏 한국어**](https://github.com/saicaca/fuwari/blob/main/README.ko.md)&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-[**🌏 Español**](https://github.com/saicaca/fuwari/blob/main/README.es.md)&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-[**🌏 ไทย**](https://github.com/saicaca/fuwari/blob/main/README.th.md)
+## 🌐 在线访问
 
-> README version: `2025-04-24`
+博客地址：[https://zijie-tian.github.io](https://zijie-tian.github.io)
 
-![Preview Image](https://raw.githubusercontent.com/saicaca/resource/main/fuwari/home.png)
+## ✨ 特性
 
-## ✨ Features
+- 🚀 **快速加载** - 基于 Astro 的静态站点生成
+- 🎨 **美观设计** - 现代化的 UI 设计，支持明暗主题切换
+- 📱 **响应式布局** - 完美适配各种设备
+- 🔍 **全文搜索** - 内置搜索功能
+- 📝 **Markdown 支持** - 支持丰富的 Markdown 语法
+- 🌍 **中文优化** - 针对中文内容进行了优化
 
-- [x] Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com)
-- [x] Smooth animations and page transitions
-- [x] Light / dark mode
-- [x] Customizable theme colors & banner
-- [x] Responsive design
-- [ ] Comments
-- [x] Search
-- [x] TOC
+## 🛠️ 技术栈
 
-## require
+- **框架**: [Astro](https://astro.build)
+- **主题**: [Fuwari](https://github.com/saicaca/fuwari)
+- **样式**: [Tailwind CSS](https://tailwindcss.com)
+- **部署**: GitHub Pages
+- **包管理**: pnpm
+- **CI/CD**: GitHub Actions
+
+## 📝 如何添加新文章
+
+1. 创建新文章：
+   ```bash
+   pnpm new-post <文章名称>
+   ```
+
+2. 编辑文章内容：
+   - 文章位于 `src/content/posts/` 目录
+   - 使用 Markdown 格式编写
+   - 在 frontmatter 中设置标题、标签、分类等信息
+
+3. 本地预览：
+   ```bash
+   pnpm dev
+   ```
+
+4. 构建和部署：
+   ```bash
+   git add .
+   git commit -m "feat: 添加新文章"
+   git push origin main
+   ```
+
+## 🚀 本地开发
+
+### 环境要求
 
 - Node.js <= 22
 - pnpm <= 9
 
-## 🚀 How to Use 1
+### 安装依赖
 
-Initialize the project locally using [create-fuwari](https://github.com/L4Ph/create-fuwari).
-
-```sh
-# npm
-npm create fuwari@latest
-
-# yarn
-yarn create fuwari
-
-# pnpm
-pnpm create fuwari@latest
-
-# bun
-bun create fuwari@latest
-
-# deno
-deno run -A npm:create-fuwari@latest
+```bash
+pnpm install
+pnpm add sharp
 ```
 
-1. Edit the config file `src/config.ts` to customize your blog.
-2. Run `pnpm new-post <filename>` to create a new post and edit it in `src/content/posts/`.
-3. Deploy your blog to Vercel, Netlify, GitHub Pages, etc. following [the guides](https://docs.astro.build/en/guides/deploy/). You need to edit the site configuration in `astro.config.mjs` before deployment.
+### 开发命令
 
-## 🚀 How to Use
+| 命令 | 说明 |
+|------|------|
+| `pnpm dev` | 启动开发服务器 |
+| `pnpm build` | 构建生产版本 |
+| `pnpm preview` | 预览构建结果 |
+| `pnpm new-post <filename>` | 创建新文章 |
 
-1. [Generate a new repository](https://github.com/saicaca/fuwari/generate) from this template or fork this repository.
-2. To edit your blog locally, clone your repository, run `pnpm install` AND `pnpm add sharp` to install dependencies.
-   - Install [pnpm](https://pnpm.io) `npm install -g pnpm` if you haven't.
-3. Edit the config file `src/config.ts` to customize your blog.
-4. Run `pnpm new-post <filename>` to create a new post and edit it in `src/content/posts/`.
-5. Deploy your blog to Vercel, Netlify, GitHub Pages, etc. following [the guides](https://docs.astro.build/en/guides/deploy/). You need to edit the site configuration in `astro.config.mjs` before deployment.
-
-## ⚙️ Frontmatter of Posts
+## 📄 文章格式
 
 ```yaml
 ---
-title: My First Blog Post
-published: 2023-09-09
-description: This is the first post of my new Astro blog.
-image: ./cover.jpg
-tags: [Foo, Bar]
-category: Front-end
+title: 文章标题
+published: 2025-05-26
+description: '文章描述'
+image: './cover.jpg'  # 可选
+tags: [标签1, 标签2]
+category: '分类'
 draft: false
-lang: jp      # Set only if the post's language differs from the site's language in `config.ts`
+lang: 'zh_CN'
 ---
+
+# 文章内容
+
+这里是文章的正文内容...
 ```
 
-## 🧞 Commands
+## 🔧 自定义配置
 
-All commands are run from the root of the project, from a terminal:
+博客的主要配置文件位于 `src/config.ts`，可以修改：
 
-| Command                             | Action                                           |
-|:------------------------------------|:-------------------------------------------------|
-| `pnpm install` AND `pnpm add sharp` | Installs dependencies                            |
-| `pnpm dev`                          | Starts local dev server at `localhost:4321`      |
-| `pnpm build`                        | Build your production site to `./dist/`          |
-| `pnpm preview`                      | Preview your build locally, before deploying     |
-| `pnpm new-post <filename>`          | Create a new post                                |
-| `pnpm astro ...`                    | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro --help`                 | Get help using the Astro CLI                     |
+- 网站标题和描述
+- 个人信息和社交链接
+- 主题颜色
+- 导航菜单
+
+## 📦 部署
+
+本博客使用 GitHub Actions 自动部署到 GitHub Pages：
+
+1. 推送代码到 `main` 分支
+2. GitHub Actions 自动构建
+3. 部署到 GitHub Pages
+
+## 📞 联系方式
+
+- GitHub: [zijie-tian](https://github.com/zijie-tian)
+- Email: your-email@example.com
+
+## 📄 许可证
+
+本项目基于 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可证。
+
+---
+
+感谢 [Fuwari](https://github.com/saicaca/fuwari) 主题的作者提供的优秀模板！
