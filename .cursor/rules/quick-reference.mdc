@@ -1,5 +1,249 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
+# Quick Reference Guide
+
+这是一个快速参考指南，包含常用命令、操作和代码片段。
+
+## 快速命令
+
+### 开发环境
+```bash
+# 启动开发服务器
+pnpm dev
+
+# 创建新文章
+pnpm new-post <filename>
+
+# 构建项目
+pnpm build
+
+# 预览构建结果
+pnpm preview
+
+# 类型检查
+pnpm astro check
+```
+
+### Git操作
+```bash
+# 添加新文章并部署
+git add .
+git commit -m "feat: 添加新文章 - <文章标题>"
+git push origin main
+
+# 更新配置
+git add src/config.ts
+git commit -m "config: 更新个人信息"
+git push origin main
+
+# 修复问题
+git add .
+git commit -m "fix: 修复构建错误"
+git push origin main
+```
+
+## 常用代码片段
+
+### 新文章模板
+创建新文章时的标准frontmatter模板：
+
+```yaml
+---
+title: 文章标题
+published: 2025-05-26
+description: '文章的简短描述，用于SEO和预览'
+image: './cover.jpg'  # 可选，文章封面图
+tags: [标签1, 标签2, 标签3]
+category: '分类名称'
+draft: false
+lang: 'zh_CN'
+---
+
+# 文章标题
+
+文章内容开始...
+
+## 二级标题
+
+### 三级标题
+
+- 列表项1
+- 列表项2
+
+```代码块```
+
+> 引用内容
+
+[链接文本](mdc:URL)
+```
+
+### 配置更新模板
+
+#### 更新个人信息
+在 [src/config.ts](mdc:src/config.ts) 中：
+
+```typescript
+export const profileConfig: ProfileConfig = {
+  avatar: "assets/images/your-avatar.png",
+  name: "你的姓名",
+  bio: "你的个人简介",
+  links: [
+    {
+      name: "GitHub",
+      icon: "fa6-brands:github",
+      url: "https://github.com/your-username",
+    },
+    {
+      name: "Email",
+      icon: "fa6-solid:envelope",
+      url: "mailto:your-email@example.com",
+    },
+  ],
+};
+```
+
+#### 添加新导航链接
+```typescript
+export const navBarConfig: NavBarConfig = {
+  links: [
+    LinkPreset.Home,
+    LinkPreset.Archive,
+    LinkPreset.About,
+    {
+      name: "项目",
+      url: "/projects",
+      external: false,
+    },
+    {
+      name: "GitHub",
+      url: "https://github.com/your-username",
+      external: true,
+    },
+  ],
+};
+```
+
+## 文件路径快速参考
+
+### 核心文件
+- 主配置: [src/config.ts](mdc:src/config.ts)
+- Astro配置: [astro.config.mjs](mdc:astro.config.mjs)
+- 部署配置: [.github/workflows/deploy.yml](mdc:.github/workflows/deploy.yml)
+- 项目文档: [README.md](mdc:README.md)
+
+### 内容文件
+- 博客文章: `src/content/posts/`
+- 示例文章: [src/content/posts/my-first-blog.md](mdc:src/content/posts/my-first-blog.md)
+- 静态资源: `src/assets/`
+- 公共文件: `public/`
+
+### 组件和布局
+- 组件: `src/components/`
+- 布局: `src/layouts/`
+- 页面: `src/pages/`
+- 样式: `src/styles/`
+
+## 常见任务清单
+
+### 发布新文章
+- [ ] 运行 `pnpm new-post <filename>`
+- [ ] 编辑文章内容和frontmatter
+- [ ] 本地预览 `pnpm dev`
+- [ ] 提交并推送到GitHub
+- [ ] 等待自动部署完成
+
+### 更新个人信息
+- [ ] 编辑 [src/config.ts](mdc:src/config.ts)
+- [ ] 更换头像图片 (如需要)
+- [ ] 本地测试
+- [ ] 提交更改
+
+### 添加新页面
+- [ ] 在 `src/pages/` 创建 `.astro` 文件
+- [ ] 添加到导航菜单 (如需要)
+- [ ] 测试页面功能
+- [ ] 部署更新
+
+### 主题定制
+- [ ] 修改 `themeColor.hue` 值
+- [ ] 更新横幅设置 (如需要)
+- [ ] 调整目录设置
+- [ ] 测试不同主题模式
+
+## 故障排除快速检查
+
+### 构建失败
+1. 检查所有Markdown文件的frontmatter语法
+2. 验证图片路径是否正确
+3. 确保没有语法错误
+4. 查看构建日志中的具体错误信息
+
+### 样式问题
+1. 清除浏览器缓存
+2. 重新构建项目 `pnpm build`
+3. 检查CSS类名是否正确
+4. 验证Tailwind配置
+
+### 部署问题
+1. 检查GitHub Actions状态
+2. 验证 [astro.config.mjs](mdc:astro.config.mjs) 中的site配置
+3. 确保GitHub Pages已启用
+4. 检查仓库权限设置
+
+## 性能检查清单
+
+### 图片优化
+- [ ] 图片大小 < 1MB
+- [ ] 使用WebP格式
+- [ ] 设置合适的尺寸
+- [ ] 添加alt属性
+
+### 内容优化
+- [ ] 文章标题清晰
+- [ ] 描述简洁有效
+- [ ] 标签相关性强
+- [ ] 内部链接合理
+
+### SEO检查
+- [ ] 每篇文章都有description
+- [ ] 标题层级合理 (H1-H6)
+- [ ] 图片有alt属性
+- [ ] URL结构清晰
+
+## 扩展功能快速添加
+
+### 添加评论系统 (Giscus)
+1. 在GitHub仓库启用Discussions
+2. 安装Giscus应用
+3. 获取配置参数
+4. 添加到博客组件中
+
+### 添加Google Analytics
+1. 创建GA账户和属性
+2. 获取测量ID
+3. 添加到Astro配置中
+4. 验证数据收集
+
+### 自定义域名
+1. 购买域名
+2. 配置DNS记录
+3. 在GitHub Pages设置自定义域名
+4. 更新 [astro.config.mjs](mdc:astro.config.mjs) 中的site配置
+
+## 备份和恢复
+
+### 重要文件备份
+- [src/config.ts](mdc:src/config.ts) - 主配置
+- `src/content/posts/` - 所有文章
+- `src/assets/images/` - 个人图片
+- [.github/workflows/deploy.yml](mdc:.github/workflows/deploy.yml) - 部署配置
+
+### 快速恢复步骤
+1. 克隆仓库
+2. 安装依赖: `pnpm install && pnpm add sharp`
+3. 恢复配置文件
+4. 测试构建: `pnpm build`
+5. 部署: `git push origin main`
