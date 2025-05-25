@@ -1,5 +1,164 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
+# Zijie Tian's Personal Blog Project Guide
+
+这是一个基于 Astro 框架和 Fuwari 主题的个人博客项目。本指南包含项目结构、配置和开发流程。
+
+## 项目概述
+
+- **框架**: Astro 5.8.0
+- **主题**: Fuwari
+- **语言**: 中文 (zh_CN)
+- **部署**: GitHub Pages
+- **包管理**: pnpm
+- **CI/CD**: GitHub Actions
+
+## 核心配置文件
+
+### 主配置文件
+主要配置位于 [src/config.ts](mdc:src/config.ts)，包含：
+- 网站标题: "Zijie Tian's Blog"
+- 语言设置: zh_CN
+- 主题色: 青色 (hue: 200)
+- 个人信息和社交链接
+
+### Astro配置
+[astro.config.mjs](mdc:astro.config.mjs) 配置了：
+- 站点URL: https://zijie-tian.github.io/
+- GitHub Pages部署设置
+- Markdown插件和主题集成
+
+### 部署配置
+[.github/workflows/deploy.yml](mdc:.github/workflows/deploy.yml) 包含GitHub Actions自动部署流程。
+
+## 项目结构
+
+```
+src/
+├── config.ts              # 主配置文件
+├── content/
+│   └── posts/             # 博客文章目录
+│       └── my-first-blog.md  # 示例文章
+├── components/            # 组件
+├── layouts/              # 布局
+├── pages/                # 页面
+└── assets/               # 静态资源
+```
+
+## 开发流程
+
+### 环境要求
+- Node.js <= 22 (推荐使用nvm安装)
+- pnpm <= 9
+
+### 安装依赖
+```bash
+pnpm install
+pnpm add sharp  # 图像处理库
+```
+
+### 开发命令
+- `pnpm dev` - 启动开发服务器 (localhost:4321)
+- `pnpm build` - 构建生产版本
+- `pnpm preview` - 预览构建结果
+- `pnpm new-post <filename>` - 创建新文章
+
+### 添加新文章流程
+1. 运行 `pnpm new-post <文章名称>`
+2. 编辑 `src/content/posts/` 目录下的新文件
+3. 设置frontmatter (标题、标签、分类等)
+4. 提交并推送到GitHub触发自动部署
+
+## 文章格式规范
+
+博客文章使用Markdown格式，frontmatter示例：
+```yaml
+---
+title: 文章标题
+published: 2025-05-26
+description: '文章描述'
+image: './cover.jpg'  # 可选
+tags: [标签1, 标签2]
+category: '分类'
+draft: false
+lang: 'zh_CN'
+---
+```
+
+## 个人化配置
+
+### 基本信息
+在 [src/config.ts](mdc:src/config.ts) 中修改：
+- `siteConfig.title` - 网站标题
+- `siteConfig.subtitle` - 副标题
+- `profileConfig.name` - 个人姓名
+- `profileConfig.bio` - 个人简介
+- `profileConfig.links` - 社交链接
+
+### 主题定制
+- `themeColor.hue` - 主题色调 (0-360)
+- `banner.enable` - 是否启用横幅
+- `toc.enable` - 是否显示目录
+
+## 部署说明
+
+### GitHub Pages自动部署
+1. 推送代码到main分支
+2. GitHub Actions自动触发构建
+3. 部署到 https://zijie-tian.github.io
+
+### 手动构建
+```bash
+pnpm build  # 生成dist目录
+```
+
+## 常见任务
+
+### 更新个人信息
+编辑 [src/config.ts](mdc:src/config.ts) 中的 `profileConfig` 部分
+
+### 添加新页面
+在 `src/pages/` 目录下创建 `.astro` 文件
+
+### 修改导航菜单
+编辑 [src/config.ts](mdc:src/config.ts) 中的 `navBarConfig.links`
+
+### 更换头像
+替换 `src/assets/images/demo-avatar.png` 文件
+
+## 技术特性
+
+- 🚀 静态站点生成 (SSG)
+- 🎨 明暗主题切换
+- 📱 响应式设计
+- 🔍 全文搜索 (Pagefind)
+- 📝 Markdown支持
+- 🌍 中文优化
+- ⚡ 快速加载
+
+## 故障排除
+
+### 开发服务器启动失败
+1. 检查Node.js版本 (<=22)
+2. 清除node_modules重新安装
+3. 确保安装了sharp: `pnpm add sharp`
+
+### 构建失败
+1. 检查Markdown文件格式
+2. 验证frontmatter语法
+3. 确保所有依赖已安装
+
+### 部署失败
+1. 检查GitHub Actions日志
+2. 验证 [astro.config.mjs](mdc:astro.config.mjs) 中的site配置
+3. 确保GitHub Pages已启用
+
+## 参考资源
+
+- [Astro文档](mdc:https:/docs.astro.build)
+- [Fuwari主题](mdc:https:/github.com/saicaca/fuwari)
+- [Tailwind CSS](mdc:https:/tailwindcss.com)
+- [项目README](mdc:README.md)

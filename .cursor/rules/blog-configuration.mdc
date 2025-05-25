@@ -1,5 +1,197 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
+# Blog Configuration & Best Practices
+
+这个规则文件包含博客项目的详细配置说明和最佳实践。
+
+## 核心配置详解
+
+### 站点配置 (siteConfig)
+在 [src/config.ts](mdc:src/config.ts) 中的 `siteConfig` 对象：
+
+```typescript
+export const siteConfig: SiteConfig = {
+  title: "Zijie Tian's Blog",           // 网站标题
+  subtitle: "Personal Blog & Tech Notes", // 副标题
+  lang: "zh_CN",                        // 语言设置
+  themeColor: {
+    hue: 200,                           // 主题色调 (青色)
+    fixed: false,                       // 是否隐藏主题色选择器
+  },
+  banner: {
+    enable: false,                      // 是否启用横幅
+  },
+  toc: {
+    enable: true,                       // 启用目录
+    depth: 2,                          // 目录深度
+  },
+}
+```
+
+### 导航配置 (navBarConfig)
+```typescript
+export const navBarConfig: NavBarConfig = {
+  links: [
+    LinkPreset.Home,                    // 首页
+    LinkPreset.Archive,                 // 归档
+    LinkPreset.About,                   // 关于
+    {
+      name: "GitHub",
+      url: "https://github.com/zijie-tian",
+      external: true,
+    },
+  ],
+}
+```
+
+### 个人资料配置 (profileConfig)
+```typescript
+export const profileConfig: ProfileConfig = {
+  avatar: "assets/images/demo-avatar.png",
+  name: "Zijie Tian",
+  bio: "Software Engineer & Tech Enthusiast...",
+  links: [
+    // GitHub, Email, LinkedIn 链接
+  ],
+}
+```
+
+## 文章管理最佳实践
+
+### 文章命名规范
+- 使用有意义的英文文件名
+- 避免特殊字符和空格
+- 使用连字符分隔单词
+- 示例: `my-first-blog.md`, `react-hooks-guide.md`
+
+### Frontmatter 最佳实践
+参考 [src/content/posts/my-first-blog.md](mdc:src/content/posts/my-first-blog.md)：
+
+```yaml
+---
+title: 我的第一篇博客文章              # 中文标题
+published: 2025-05-26                # 发布日期
+description: '简短的文章描述'          # SEO描述
+image: './cover.jpg'                 # 封面图片 (可选)
+tags: [博客, 个人网站, Astro]         # 标签数组
+category: '生活'                     # 分类
+draft: false                         # 是否为草稿
+lang: 'zh_CN'                       # 文章语言
+---
+```
+
+### 标签和分类策略
+- **技术类**: Astro, React, JavaScript, CSS, Node.js
+- **工具类**: Git, VS Code, Docker, Linux
+- **生活类**: 思考, 总结, 经验分享
+- **项目类**: 开源项目, 个人作品
+
+## 部署配置详解
+
+### GitHub Actions工作流
+[.github/workflows/deploy.yml](mdc:.github/workflows/deploy.yml) 配置说明：
+
+1. **触发条件**: 推送到main分支或手动触发
+2. **权限设置**: 读取内容、写入Pages、ID令牌
+3. **构建步骤**:
+   - 检出代码
+   - 设置Node.js 20
+   - 设置pnpm 9
+   - 安装依赖
+   - 构建项目
+   - 上传构建产物
+4. **部署步骤**: 部署到GitHub Pages
+
+### Astro部署配置
+[astro.config.mjs](mdc:astro.config.mjs) 关键设置：
+
+```javascript
+export default defineConfig({
+  site: "https://zijie-tian.github.io/",  // GitHub Pages URL
+  base: "/",                              // 基础路径
+  trailingSlash: "always",               // URL末尾斜杠
+  // ... 其他配置
+});
+```
+
+## 开发环境最佳实践
+
+### 环境设置
+1. 使用nvm管理Node.js版本
+2. 全局安装pnpm: `npm install -g pnpm`
+3. 项目依赖: `pnpm install && pnpm add sharp`
+
+### 开发工作流
+1. **本地开发**: `pnpm dev` (http://localhost:4321)
+2. **创建文章**: `pnpm new-post <filename>`
+3. **构建测试**: `pnpm build`
+4. **预览构建**: `pnpm preview`
+5. **提交部署**: `git add . && git commit -m "..." && git push`
+
+### Git提交规范
+- `feat:` 新功能
+- `fix:` 修复bug
+- `docs:` 文档更新
+- `style:` 样式调整
+- `refactor:` 代码重构
+- `chore:` 构建/工具更新
+
+示例:
+```bash
+git commit -m "feat: 添加新文章 - React Hooks指南"
+git commit -m "docs: 更新README文档"
+git commit -m "style: 调整主题颜色为蓝色"
+```
+
+## 性能优化建议
+
+### 图片优化
+- 使用WebP格式
+- 压缩图片大小
+- 设置合适的尺寸
+- 利用Astro的图片优化功能
+
+### 内容优化
+- 合理使用标题层级 (H1-H6)
+- 添加适当的内部链接
+- 优化文章描述和标签
+- 保持文章长度适中
+
+### SEO优化
+- 设置有意义的title和description
+- 使用语义化的HTML结构
+- 添加适当的meta标签
+- 生成sitemap (自动)
+
+## 故障排除指南
+
+### 常见问题
+1. **构建失败**: 检查Markdown语法和frontmatter格式
+2. **样式异常**: 清除缓存重新构建
+3. **图片不显示**: 检查图片路径和格式
+4. **搜索不工作**: 确保Pagefind正确配置
+
+### 调试技巧
+- 使用浏览器开发者工具
+- 查看Astro开发服务器日志
+- 检查GitHub Actions构建日志
+- 验证生成的HTML结构
+
+## 扩展功能
+
+### 可添加的功能
+- 评论系统 (Giscus, Utterances)
+- 访问统计 (Google Analytics)
+- RSS订阅 (已内置)
+- 站内搜索 (已内置Pagefind)
+- 代码高亮 (已支持)
+- 数学公式 (已支持KaTeX)
+
+### 主题定制
+- 修改CSS变量
+- 添加自定义组件
+- 调整布局结构
+- 更换字体和图标

@@ -22,7 +22,6 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 export default defineConfig({
 	site: "https://zijie-tian.github.io/",
 	base: "/",
-	trailingSlash: "always",
 	integrations: [
 		tailwind({
 			nesting: true,
