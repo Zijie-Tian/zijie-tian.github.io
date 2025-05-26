@@ -1,0 +1,109 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 部署和故障排除知识库
+
+## GitHub Pages 部署问题
+
+### 常见问题和解决方案
+
+#### 1. 网站无法访问 (404错误)
+**症状**: 访问 https://zijie-tian.github.io 返回 404
+**原因**: GitHub Pages 功能未启用
+**解决方案**:
+1. 访问 GitHub 仓库 Settings → Pages
+2. 选择 "Deploy from a branch"
+3. 选择 `gh-pages` 分支
+4. 点击 Save
+
+#### 2. 构建失败
+**检查清单**:
+- 确认 [.github/workflows/deploy.yml](mdc:.github/workflows/deploy.yml) 配置正确
+- 检查 [astro.config.mjs](mdc:astro.config.mjs) 中的 site URL
+- 验证 Node.js 版本兼容性 (使用 Node 20)
+
+#### 3. 静态资源路径问题
+**解决方案**: 确保 `astro.config.mjs` 中的 `site` 配置正确：
+```javascript
+export default defineConfig({
+  site: "https://zijie-tian.github.io",
+  // ...
+});
+```
+
+## Vercel 部署
+
+### 成功部署信息
+- **主域名**: https://zijie-tian-github-io.vercel.app
+- **状态**: ✅ 生产就绪
+- **构建时间**: ~26秒
+
+### Vercel 优势
+1. 零配置部署
+2. 全球 CDN
+3. 自动 HTTPS
+4. 预览部署
+5. 边缘函数支持
+
+### 部署命令
+```bash
+# 预览部署
+vercel
+
+# 生产部署
+vercel --prod
+```
+
+## 环境配置
+
+### Node.js 和包管理器
+```bash
+# 安装和使用 Node.js 20
+nvm install 20
+nvm use 20
+
+# 安装 pnpm
+npm install -g pnpm
+
+# 安装项目依赖
+pnpm install
+
+# 安装图像处理库
+pnpm add sharp
+```
+
+### 环境变量检查
+```bash
+# 检查 Node.js 版本
+node --version  # 应该是 v20.x.x
+
+# 检查 pnpm 版本
+pnpm --version
+
+# 检查 Astro CLI
+pnpm astro --version
+```
+
+## 调试步骤
+
+### 本地调试
+1. 清理缓存: `pnpm clean` 或删除 `dist/` 和 `.astro/` 目录
+2. 重新安装依赖: `rm -rf node_modules && pnpm install`
+3. 本地构建测试: `pnpm build && pnpm preview`
+
+### GitHub Pages 调试
+1. 检查 Actions 日志
+2. 验证 gh-pages 分支内容
+3. 确认 Pages 设置正确
+
+### 性能优化
+- 使用 Vercel 的 CDN 获得更好性能
+- 启用图像优化 (sharp)
+- 检查构建产物大小
+
+## 文档参考
+- [DEPLOYMENT.md](mdc:DEPLOYMENT.md) - 详细部署指南
+- [DEBUG_GITHUB_PAGES.md](mdc:DEBUG_GITHUB_PAGES.md) - GitHub Pages 调试指南
+- [VERCEL_DEPLOYMENT.md](mdc:VERCEL_DEPLOYMENT.md) - Vercel 部署总结

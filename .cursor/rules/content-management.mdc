@@ -1,0 +1,134 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# 内容管理知识库
+
+## 博客文章结构
+
+### 文章目录
+所有博客文章位于 `src/content/posts/` 目录下，使用 Markdown 格式。
+
+### 当前文章列表
+
+#### 1. 个人介绍文章
+- **文件**: [src/content/posts/first-post.md](mdc:src/content/posts/first-post.md)
+- **标题**: "我的第一篇博客文章"
+- **内容**: 个人介绍，包括教育背景、技术栈、兴趣爱好
+- **标签**: ["个人介绍", "博客", "开始"]
+
+#### 2. 技术文章
+- **文件**: [src/content/posts/astro-intro.md](mdc:src/content/posts/astro-intro.md)
+- **标题**: "Astro框架简介"
+- **内容**: Astro框架的特点、优势和使用场景
+- **标签**: ["Astro", "前端", "静态网站", "技术"]
+
+#### 3. 示例文章
+- **文件**: [src/content/posts/markdown.md](mdc:src/content/posts/markdown.md)
+- **标题**: "Markdown语法示例"
+- **内容**: 中文Markdown语法演示
+- **标签**: ["markdown", "语法", "示例"]
+
+#### 4. 使用指南
+- **文件**: [src/content/posts/simple-guide.md](mdc:src/content/posts/simple-guide.md)
+- **标题**: "Simple Guides for Fuwari"
+- **内容**: Fuwari主题的使用指南
+- **标签**: ["guide", "fuwari", "astro"]
+
+## 文章格式规范
+
+### Frontmatter 结构
+```yaml
+---
+title: "文章标题"
+published: 2024-01-01
+description: "文章描述"
+image: "./cover.jpg"  # 可选
+tags: ["标签1", "标签2"]
+category: "分类"
+draft: false
+lang: "zh"  # 中文文章
+---
+```
+
+### 内容编写规范
+1. **标题层级**: 使用 H2 (##) 作为主要章节标题
+2. **代码块**: 使用三个反引号包围，指定语言
+3. **图片**: 放在 `src/content/posts/` 对应文章目录下
+4. **链接**: 使用相对路径或完整URL
+
+## 内容管理策略
+
+### 已删除的示例文章
+为了保持博客内容的精简和个人化，已删除以下示例文章：
+- `cjk-test.md` - CJK字符测试
+- `draft.md` - 草稿示例
+- `video.md` - 视频嵌入示例
+- `markdown-extended.md` - 扩展Markdown语法
+
+### 内容分类
+1. **个人介绍** - 关于作者的信息
+2. **技术文章** - 编程、框架、工具相关
+3. **使用指南** - 教程和指导
+4. **示例文档** - 语法和格式演示
+
+## 图片和媒体管理
+
+### 图片存储
+- **位置**: `src/content/posts/` 目录下对应文章的子目录
+- **格式**: 支持 jpg, png, webp, svg
+- **优化**: 使用 sharp 库自动优化
+
+### 图片引用
+```markdown
+# 相对路径引用
+![描述](./images/example.jpg)
+
+# 绝对路径引用
+![描述](/images/example.jpg)
+```
+
+## SEO 和元数据
+
+### 重要元数据字段
+- `title`: 文章标题，影响SEO
+- `description`: 文章描述，显示在搜索结果中
+- `tags`: 标签，用于分类和搜索
+- `published`: 发布日期，影响排序
+- `image`: 封面图片，用于社交分享
+
+### 最佳实践
+1. 标题简洁明了，包含关键词
+2. 描述控制在150字符以内
+3. 使用相关标签提高可发现性
+4. 添加高质量封面图片
+
+## 多语言支持
+
+### 当前语言设置
+- **主语言**: 中文 (zh_CN)
+- **配置文件**: [src/config.ts](mdc:src/config.ts)
+
+### 文章语言标记
+```yaml
+---
+lang: "zh"  # 中文文章
+lang: "en"  # 英文文章
+---
+```
+
+## 内容更新工作流
+
+### 添加新文章
+1. 在 `src/content/posts/` 创建新的 `.md` 文件
+2. 添加正确的 frontmatter
+3. 编写文章内容
+4. 本地预览: `pnpm dev`
+5. 构建测试: `pnpm build`
+6. 提交并推送到 GitHub
+
+### 编辑现有文章
+1. 直接编辑对应的 `.md` 文件
+2. 更新 `published` 日期（如需要）
+3. 本地测试后提交更改
