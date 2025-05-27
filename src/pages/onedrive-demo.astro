@@ -1,0 +1,71 @@
+---
+import OneDriveIntegration from "../components/OneDriveIntegration.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="OneDrive 集成演示">
+  <main class="container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-3xl font-bold text-center mb-8">OneDrive 集成演示</h1>
+      
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+        <h2 class="text-lg font-semibold text-blue-800 mb-2">使用说明</h2>
+        <ul class="text-blue-700 space-y-2">
+          <li>• 点击"登录 Microsoft 账户"按钮进行身份验证</li>
+          <li>• 登录成功后，系统会显示你OneDrive中指定文件夹的内容</li>
+          <li>• 支持查看文件和文件夹，点击"查看"可以在新窗口中打开文件</li>
+          <li>• 使用"刷新"按钮可以重新加载文件列表</li>
+        </ul>
+      </div>
+
+      <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
+        <h2 class="text-lg font-semibold text-yellow-800 mb-2">配置要求</h2>
+        <ul class="text-yellow-700 space-y-2">
+          <li>• 需要在Azure Portal中注册应用并获取Client ID</li>
+          <li>• 需要配置正确的重定向URI</li>
+          <li>• 需要授予适当的Microsoft Graph API权限</li>
+          <li>• 当前使用的是演示Client ID，请替换为你自己的</li>
+        </ul>
+      </div>
+
+      <!-- OneDrive 集成组件 -->
+      <OneDriveIntegration 
+        clientId="4b36a6d5-66ae-4656-9b1f-d73b9a4f2163" 
+        folderPath="/Blog"
+      />
+
+      <div class="mt-12 bg-gray-50 rounded-lg p-6">
+        <h2 class="text-lg font-semibold mb-4">技术实现</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-medium mb-2">前端功能</h3>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• OAuth 2.0 身份验证</li>
+              <li>• Microsoft Graph API 调用</li>
+              <li>• 响应式文件列表显示</li>
+              <li>• 文件类型图标识别</li>
+              <li>• 错误处理和加载状态</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-medium mb-2">后端API</h3>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Astro API路由处理</li>
+              <li>• Microsoft Graph代理请求</li>
+              <li>• 文件内容获取</li>
+              <li>• 文件上传支持</li>
+              <li>• 错误处理和缓存</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* 自定义样式 */
+  .container {
+    min-height: 100vh;
+  }
+</style> 

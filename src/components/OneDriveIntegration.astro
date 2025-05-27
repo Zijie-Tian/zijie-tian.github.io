@@ -1,0 +1,308 @@
+---
+// OneDrive Integration Component
+interface Props {
+	folderPath?: string;
+	clientId?: string;
+}
+
+const {
+	folderPath = "/Blog",
+	clientId = "4b36a6d5-66ae-4656-9b1f-d73b9a4f2163",
+} = Astro.props;
+---
+
+<div id="onedrive-container" class="max-w-4xl mx-auto p-6" data-client-id={clientId} data-folder-path={folderPath}>
+  <h2 class="text-2xl font-bold mb-6">OneDrive 文件夹内容</h2>
+  
+  <!-- 登录状态显示 -->
+  <div id="auth-section" class="mb-6">
+    <div id="login-button" class="hidden">
+      <button 
+        id="sign-in-btn" 
+        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
+      >
+        登录 Microsoft 账户
+      </button>
+    </div>
+    
+    <div id="user-info" class="hidden">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
+          <span id="user-initial"></span>
+        </div>
+        <div>
+          <p class="font-medium" id="user-name"></p>
+          <button 
+            id="sign-out-btn" 
+            class="text-sm text-gray-600 hover:text-gray-800 underline"
+          >
+            退出登录
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 文件列表 -->
+  <div id="files-section" class="hidden">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-semibold">文件列表</h3>
+      <button 
+        id="refresh-btn" 
+        class="text-blue-600 hover:text-blue-800 text-sm underline"
+      >
+        刷新
+      </button>
+    </div>
+    
+    <div id="loading" class="hidden text-center py-8">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      <p class="mt-2 text-gray-600">加载中...</p>
+    </div>
+    
+    <div id="files-list" class="space-y-3"></div>
+    
+    <div id="error-message" class="hidden bg-red-50 border border-red-200 rounded-lg p-4 mt-4">
+      <p class="text-red-800"></p>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // OneDrive 集成脚本
+  class OneDriveManager {
+    constructor(clientId, folderPath) {
+      this.clientId = clientId;
+      this.folderPath = folderPath;
+      this.accessToken = null;
+      this.init();
+    }
+
+    init() {
+      // 检查是否已有访问令牌
+      this.accessToken = localStorage.getItem('onedrive_access_token');
+      
+      if (this.accessToken) {
+        this.showUserInfo();
+        this.loadFiles();
+      } else {
+        this.showLoginButton();
+      }
+
+      // 绑定事件
+      this.bindEvents();
+    }
+
+    bindEvents() {
+      const signInBtn = document.getElementById('sign-in-btn');
+      const signOutBtn = document.getElementById('sign-out-btn');
+      const refreshBtn = document.getElementById('refresh-btn');
+
+      if (signInBtn) {
+        signInBtn.addEventListener('click', () => this.signIn());
+      }
+
+      if (signOutBtn) {
+        signOutBtn.addEventListener('click', () => this.signOut());
+      }
+
+      if (refreshBtn) {
+        refreshBtn.addEventListener('click', () => this.loadFiles());
+      }
+    }
+
+    showLoginButton() {
+      document.getElementById('login-button').classList.remove('hidden');
+      document.getElementById('user-info').classList.add('hidden');
+      document.getElementById('files-section').classList.add('hidden');
+    }
+
+    showUserInfo() {
+      document.getElementById('login-button').classList.add('hidden');
+      document.getElementById('user-info').classList.remove('hidden');
+      document.getElementById('files-section').classList.remove('hidden');
+      
+      // 这里可以调用Microsoft Graph API获取用户信息
+      // 暂时显示占位符
+      document.getElementById('user-initial').textContent = 'U';
+      document.getElementById('user-name').textContent = '已登录用户';
+    }
+
+    signIn() {
+      // 构建Microsoft OAuth2 授权URL
+      const authUrl = new URL('https://login.microsoftonline.com/common/oauth2/v2.0/authorize');
+      authUrl.searchParams.set('client_id', this.clientId);
+      authUrl.searchParams.set('response_type', 'token');
+      authUrl.searchParams.set('redirect_uri', window.location.origin + window.location.pathname);
+      authUrl.searchParams.set('scope', 'Files.Read.All Files.ReadWrite.All User.Read');
+      authUrl.searchParams.set('response_mode', 'fragment');
+
+      // 重定向到Microsoft登录页面
+      window.location.href = authUrl.toString();
+    }
+
+    signOut() {
+      localStorage.removeItem('onedrive_access_token');
+      this.accessToken = null;
+      this.showLoginButton();
+    }
+
+    async loadFiles() {
+      if (!this.accessToken) {
+        this.showLoginButton();
+        return;
+      }
+
+      this.showLoading(true);
+      this.hideError();
+
+      try {
+        const response = await fetch(`/api/onedrive?access_token=${encodeURIComponent(this.accessToken)}&folder_path=${encodeURIComponent(this.folderPath)}`);
+        const data = await response.json();
+
+        if (data.success) {
+          this.displayFiles(data.files);
+        } else {
+          this.showError(data.message || '获取文件失败');
+        }
+      } catch (error) {
+        console.error('Error loading files:', error);
+        this.showError('网络错误，请稍后重试');
+      } finally {
+        this.showLoading(false);
+      }
+    }
+
+    displayFiles(files) {
+      const filesList = document.getElementById('files-list');
+      filesList.innerHTML = '';
+
+      if (files.length === 0) {
+        filesList.innerHTML = '<p class="text-gray-500 text-center py-8">文件夹为空</p>';
+        return;
+      }
+
+      files.forEach(file => {
+        const fileElement = this.createFileElement(file);
+        filesList.appendChild(fileElement);
+      });
+    }
+
+    createFileElement(file) {
+      const div = document.createElement('div');
+      div.className = 'file-item bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border hover:shadow-md transition-shadow';
+      
+      const icon = file.isFolder ? '📁' : this.getFileIcon(file.name);
+      const size = file.size ? this.formatFileSize(file.size) : '';
+      const date = new Date(file.lastModifiedDateTime).toLocaleDateString('zh-CN');
+
+      div.innerHTML = `
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-3">
+            <span class="text-2xl">${icon}</span>
+            <div>
+              <h4 class="font-medium text-gray-900 dark:text-white">${file.name}</h4>
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                ${size} ${size && date ? '•' : ''} ${date}
+              </p>
+            </div>
+          </div>
+          <div class="flex space-x-2">
+            ${!file.isFolder ? `
+              <a href="${file.webUrl}" target="_blank" 
+                 class="text-blue-600 hover:text-blue-800 text-sm underline">
+                查看
+              </a>
+            ` : ''}
+          </div>
+        </div>
+      `;
+
+      return div;
+    }
+
+    getFileIcon(filename) {
+      const ext = filename.toLowerCase().split('.').pop();
+      const iconMap = {
+        'md': '📝', 'txt': '📄', 'pdf': '📕', 'doc': '📘', 'docx': '📘',
+        'xls': '📗', 'xlsx': '📗', 'ppt': '📙', 'pptx': '📙',
+        'jpg': '🖼️', 'jpeg': '🖼️', 'png': '🖼️', 'gif': '🖼️',
+        'mp4': '🎬', 'avi': '🎬', 'mov': '🎬',
+        'mp3': '🎵', 'wav': '🎵', 'flac': '🎵',
+        'zip': '📦', 'rar': '📦', '7z': '📦'
+      };
+      return iconMap[ext] || '📄';
+    }
+
+    formatFileSize(bytes) {
+      if (bytes === 0) return '0 B';
+      const k = 1024;
+      const sizes = ['B', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+    }
+
+    showLoading(show) {
+      const loading = document.getElementById('loading');
+      if (show) {
+        loading.classList.remove('hidden');
+      } else {
+        loading.classList.add('hidden');
+      }
+    }
+
+    showError(message) {
+      const errorDiv = document.getElementById('error-message');
+      const errorText = errorDiv.querySelector('p');
+      errorText.textContent = message;
+      errorDiv.classList.remove('hidden');
+    }
+
+    hideError() {
+      document.getElementById('error-message').classList.add('hidden');
+    }
+  }
+
+  // 页面加载完成后初始化
+  document.addEventListener('DOMContentLoaded', () => {
+    // 检查URL片段中是否有访问令牌（OAuth回调）
+    const hash = window.location.hash;
+    if (hash.includes('access_token=')) {
+      const params = new URLSearchParams(hash.substring(1));
+      const accessToken = params.get('access_token');
+      if (accessToken) {
+        localStorage.setItem('onedrive_access_token', accessToken);
+        // 清除URL中的令牌信息
+        window.location.hash = '';
+      }
+    }
+
+    // 初始化OneDrive管理器
+    const clientId = document.querySelector('#onedrive-container').dataset.clientId || 'YOUR_CLIENT_ID';
+    const folderPath = document.querySelector('#onedrive-container').dataset.folderPath || '/Blog';
+    
+    new OneDriveManager(clientId, folderPath);
+  });
+</script>
+
+<style>
+  .file-item {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .file-item:hover {
+    transform: translateY(-2px);
+  }
+  
+  .blog-post-item {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .blog-post-item:hover {
+    background-color: rgba(59, 130, 246, 0.05);
+  }
+  
+  #files-section, #blog-posts-section {
+    display: none;
+  }
+</style> 
