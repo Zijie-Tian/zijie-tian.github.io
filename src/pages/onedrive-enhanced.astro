@@ -1,0 +1,163 @@
+---
+import OneDriveIntegration from "../components/OneDriveIntegration.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="OneDrive 集成 - 增强版">
+  <main class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div class="container mx-auto px-4 py-8">
+      <!-- 页面头部 -->
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-4">
+          <span class="text-2xl text-white">☁️</span>
+        </div>
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">OneDrive 云端文件管理</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          无缝连接你的OneDrive，在博客中直接管理和展示云端文件
+        </p>
+      </div>
+
+      <!-- 功能特性展示 -->
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white rounded-xl shadow-md p-6 text-center">
+          <div class="text-3xl mb-3">🔐</div>
+          <h3 class="font-semibold text-gray-800 mb-2">安全认证</h3>
+          <p class="text-gray-600 text-sm">使用Microsoft官方OAuth 2.0认证，保障账户安全</p>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-md p-6 text-center">
+          <div class="text-3xl mb-3">📱</div>
+          <h3 class="font-semibold text-gray-800 mb-2">响应式设计</h3>
+          <p class="text-gray-600 text-sm">完美适配桌面和移动设备，随时随地访问文件</p>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-md p-6 text-center">
+          <div class="text-3xl mb-3">⚡</div>
+          <h3 class="font-semibold text-gray-800 mb-2">快速加载</h3>
+          <p class="text-gray-600 text-sm">智能缓存机制，提供流畅的文件浏览体验</p>
+        </div>
+      </div>
+
+      <!-- OneDrive 集成组件 -->
+      <div class="max-w-6xl mx-auto">
+        <OneDriveIntegration 
+          clientId="4b36a6d5-66ae-4656-9b1f-d73b9a4f2163" 
+          folderPath="/Blog"
+        />
+      </div>
+
+      <!-- 使用说明 -->
+      <div class="max-w-4xl mx-auto mt-16">
+        <div class="bg-white rounded-xl shadow-md p-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">🚀 如何使用</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3">1</span>
+                连接账户
+              </h3>
+              <p class="text-gray-600 mb-4">点击"登录 Microsoft 账户"按钮，使用你的Microsoft账户进行安全登录。</p>
+              
+              <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3">2</span>
+                浏览文件
+              </h3>
+              <p class="text-gray-600">登录成功后，你可以浏览OneDrive中的文件和文件夹，支持多种文件类型。</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3">3</span>
+                管理文件
+              </h3>
+              <p class="text-gray-600 mb-4">点击"查看"按钮可以在新窗口中打开文件，支持在线预览和下载。</p>
+              
+              <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3">4</span>
+                实时同步
+              </h3>
+              <p class="text-gray-600">使用"刷新"按钮可以获取最新的文件列表，保持内容同步。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 技术特性 -->
+      <div class="max-w-4xl mx-auto mt-12">
+        <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">💻 技术特性</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-semibold text-gray-800 mb-3">🎨 前端技术</h3>
+              <ul class="text-gray-600 space-y-2 text-sm">
+                <li>• Astro 静态站点生成</li>
+                <li>• 响应式 CSS 设计</li>
+                <li>• 现代 JavaScript ES6+</li>
+                <li>• Tailwind CSS 样式框架</li>
+                <li>• 渐进式 Web 应用体验</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-gray-800 mb-3">🔧 后端集成</h3>
+              <ul class="text-gray-600 space-y-2 text-sm">
+                <li>• Microsoft Graph API</li>
+                <li>• OAuth 2.0 安全认证</li>
+                <li>• RESTful API 设计</li>
+                <li>• 智能缓存机制</li>
+                <li>• 错误处理和恢复</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 页脚 -->
+      <div class="text-center mt-16 text-gray-500">
+        <p class="text-sm">
+          基于 <a href="https://docs.microsoft.com/en-us/graph/" class="text-blue-600 hover:underline" target="_blank">Microsoft Graph API</a> 
+          构建，遵循最佳安全实践
+        </p>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .container {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .grid > div {
+    animation: slideUp 0.6s ease-out;
+    animation-fill-mode: both;
+  }
+  
+  .grid > div:nth-child(1) { animation-delay: 0.1s; }
+  .grid > div:nth-child(2) { animation-delay: 0.2s; }
+  .grid > div:nth-child(3) { animation-delay: 0.3s; }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style> 
